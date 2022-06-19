@@ -6,10 +6,6 @@ runs:
   using: "composite"
 
   steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
     # This is to support things like nx.dev affected or changesets
     - name: fetch more git
       run: git fetch --force  --tags --prune --depth=5 origin master

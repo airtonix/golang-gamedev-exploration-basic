@@ -24,6 +24,10 @@ jobs:
         shell: bash
 
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Setup
         uses: ./.github/actions/setup-tooling
 
