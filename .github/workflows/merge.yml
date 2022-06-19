@@ -1,10 +1,11 @@
 name: PR Checks
 
 on:
-  push:
-    # run only against tags
-    tags:
-      - "*"
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
