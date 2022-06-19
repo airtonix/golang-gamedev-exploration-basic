@@ -32,6 +32,12 @@ runs:
         restore-keys: |
           ${{ runner.os }}-go-
 
+    - name: Install dependencies
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install libasound2-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev
+
     #
     # Install things sensitive to the lockfile
     #  - only runs if we had a cache miss from previous step
@@ -39,3 +45,8 @@ runs:
       if: steps.go-cache.outputs.cache-hit != 'true'
       shell: bash
       run: go get
+
+    - name: Xvfb
+      shell: bash
+      run: |
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
