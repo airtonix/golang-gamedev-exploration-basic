@@ -31,9 +31,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup-tooling
 
-      - name: Vet
-        run: go vet -v
-
       - name: Lint
         uses: golangci/golangci-lint-action@v3
 
