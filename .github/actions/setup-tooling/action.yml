@@ -53,11 +53,6 @@ runs:
           libxxf86vm-dev \
           pkg-config
 
-    - name: install deps
-      if: steps.go-cache.outputs.cache-hit != 'true'
-      shell: bash
-      run: go get
-
     - name: Xvfb
       shell: bash
       run: |
