@@ -2,7 +2,18 @@
 
 ## Setup
 
-```sh
+```shell
 $ ./setup.sh
-$ go get .
+$ just setup
+```
+
+## Release
+
+1. push tag
+2. `$ just release`
+
+## Local builds
+
+```shell
+$ just build
 ```

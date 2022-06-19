@@ -63,5 +63,12 @@ else
   asdf plugin add just https://github.com/heliumbrain/asdf-just.git
 fi
 
+if [ -d "$ASDF_HOME/plugins/goreleaser" ]; then
+  asdf plugin-update goreleaser
+else
+  echo "===> Installing ASDF goreleaser plugin"
+  asdf plugin-add goreleaser https://github.com/kforsthoevel/asdf-goreleaser.git
+fi
+
 echo "===> Installing build deps with ASDF"
 asdf install

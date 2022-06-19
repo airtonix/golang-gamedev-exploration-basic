@@ -1,0 +1,16 @@
+*
+!components/*
+!systems/*
+!entities/*
+!core/*
+!game/*
+!.github/*
+!.goreleaser.yaml
+!.tool-versions
+!go.mod
+!go.sum
+!Justfile
+!main.go
+!project.sublime-project
+!README.md
+!setup.sh

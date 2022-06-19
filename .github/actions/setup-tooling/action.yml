@@ -1,0 +1,41 @@
+name: Setup Tooling
+
+description: provisions tooling and installs dependancies
+
+runs:
+  using: "composite"
+
+  steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # This is to support things like nx.dev affected or changesets
+    - name: fetch more git
+      run: git fetch --force  --tags --prune --depth=5 origin master
+      shell: bash
+
+    - name: asdf install
+      shell: bash
+      run: ./setup.sh
+
+    - name: Get GO cache directory path
+      id: go-cache-dir-path
+      run: echo "::set-output name=dir::$(go env GOCACHE)"
+      shell: bash
+
+    - uses: actions/cache@v3
+      id: go-cache
+      with:
+        path: ${{ steps.go-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    #
+    # Install things sensitive to the lockfile
+    #  - only runs if we had a cache miss from previous step
+    - name: install deps
+      if: steps.go-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: go get
