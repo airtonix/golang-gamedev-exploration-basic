@@ -13,7 +13,7 @@ permissions:
   # issues: write
 
 jobs:
-  goreleaser:
+  Check:
     env:
       DISPLAY: ":99.0"
 
@@ -30,6 +30,10 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup-tooling
+
+      - name: Verify Tools
+        run: |
+          go version
 
       - name: Lint
         uses: golangci/golangci-lint-action@v3
