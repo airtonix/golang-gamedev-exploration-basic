@@ -40,7 +40,10 @@ func NewKeyboardControlSystem() *KeyboardControlSystem {
 	}
 }
 
-func (system *KeyboardControlSystem) Draw(world engine.World, screen *ebiten.Image) {
+func (system *KeyboardControlSystem) Draw(
+	world engine.World,
+	screen *ebiten.Image,
+) {
 	controllables := world.View(
 		components.Control{},
 	)
@@ -73,7 +76,8 @@ func (system *KeyboardControlSystem) Draw(world engine.World, screen *ebiten.Ima
 		for direction := range control.Direction {
 			isFirst := direction == firstDirection
 			isSecond := direction == secondDirection
-			control.Direction[direction] = isFirst || isSecond && firstAxis != secondAxis
+			isEnabled := isFirst || isSecond && firstAxis != secondAxis
+			control.Direction[direction] = isEnabled
 		}
 	})
 }

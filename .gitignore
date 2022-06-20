@@ -5,6 +5,8 @@
 # The Repo
 !.gitignore
 !.goreleaser.yaml
+!.golangci.yaml
+!.husky.toml
 !.tool-versions
 !Justfile
 !project.sublime-project
@@ -18,6 +20,7 @@
 !go.mod
 !go.sum
 !main.go
+!internal/
 !components/
 !systems/
 !game/

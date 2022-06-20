@@ -24,5 +24,10 @@ lint:
 build:
     goreleaser build --snapshot --rm-dist
 
+serve:
+    @echo '🍱 WASM being served on http://localhost:8080'
+    @wasmserve .
+
+
 release *ARGS="":
     goreleaser {{ARGS}}

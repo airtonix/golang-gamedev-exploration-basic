@@ -6,12 +6,9 @@ before:
     - go mod tidy
 
 builds:
-  - env:
-      - CGO_ENABLED=0
-    goos:
+  - goos:
       - js
       - linux
-      - windows
     goarch:
       - amd64
       - wasm
