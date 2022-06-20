@@ -1,16 +1,28 @@
-*
-!components/*
-!systems/*
-!entities/*
-!core/*
-!game/*
-!.github/*
+/*
+**/.DS_Store
+**.log
+
+# The Repo
+!.gitignore
 !.goreleaser.yaml
 !.tool-versions
-!go.mod
-!go.sum
 !Justfile
-!main.go
 !project.sublime-project
 !README.md
 !setup.sh
+
+# Github
+!.github/
+
+# The game
+!go.mod
+!go.sum
+!main.go
+!components/
+!systems/
+!game/
+!entities/
+!core/
+
+
+/project.sublime-workspace

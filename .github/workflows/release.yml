@@ -1,4 +1,4 @@
-name: goreleaser
+name: Release
 
 on:
   push:
@@ -6,17 +6,29 @@ on:
     tags:
       - "*"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
   # packages: write
   # issues: write
 
 jobs:
-  goreleaser:
+  Release:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Setup
         uses: ./.github/actions/setup-tooling
+
+      - name: Verify Tools
+        run: |
+          go version
 
       - name: Release
         uses: goreleaser/goreleaser-action@v2

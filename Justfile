@@ -18,6 +18,9 @@ setup:
 fix:
     go mod tidy
 
+lint:
+    golangci-lint run 
+    
 build:
     goreleaser build --snapshot --rm-dist
 
