@@ -31,6 +31,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup-tooling
 
+      - name: Lint
+        uses: golangci/golangci-lint-action@v3
+
       - name: Build
         run: |
           go build "-gcflags=all=-N -l" -v .

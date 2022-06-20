@@ -50,23 +50,26 @@ fi
 source "$ASDF_BIN"
 
 if [ -d "$ASDF_HOME/plugins/golang" ]; then
+  echo "===> 🎁 Updating ASDF golang plugin"
   asdf plugin-update golang
 else
-  echo "===> Installing ASDF golang plugin"
+  echo "===> 📦 Installing ASDF golang plugin"
   asdf plugin add golang
 fi
 
 if [ -d "$ASDF_HOME/plugins/just" ]; then
+  echo "===> 🎁 Updating ASDF just plugin"
   asdf plugin-update just
 else
-  echo "===> Installing ASDF just plugin"
+  echo "===> 📦 Installing ASDF just plugin"
   asdf plugin add just https://github.com/heliumbrain/asdf-just.git
 fi
 
 if [ -d "$ASDF_HOME/plugins/goreleaser" ]; then
+  echo "===> 🎁 Updating ASDF goreleaser plugin"
   asdf plugin-update goreleaser
 else
-  echo "===> Installing ASDF goreleaser plugin"
+  echo "===> 📦 Installing ASDF goreleaser plugin"
   asdf plugin-add goreleaser https://github.com/kforsthoevel/asdf-goreleaser.git
 fi
 
