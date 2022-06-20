@@ -70,7 +70,15 @@ if [ -d "$ASDF_HOME/plugins/goreleaser" ]; then
   asdf plugin-update goreleaser
 else
   echo "===> 📦 Installing ASDF goreleaser plugin"
-  asdf plugin-add goreleaser https://github.com/kforsthoevel/asdf-goreleaser.git
+  asdf plugin-add goreleaser
+fi
+
+if [ -d "$ASDF_HOME/plugins/golangci-lint" ]; then
+  echo "===> 🎁 Updating ASDF golangci-lint plugin"
+  asdf plugin-update golangci-lint
+else
+  echo "===> 📦 Installing ASDF golangci-lint plugin"
+  asdf plugin-add golangci-lint
 fi
 
 echo "===> Installing build deps with ASDF"
