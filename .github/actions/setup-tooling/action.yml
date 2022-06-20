@@ -24,6 +24,12 @@ runs:
       shell: bash
       run: ./setup.sh
 
+    - name: set asdf path
+      shell: bash
+      run: |
+        echo "$HOME/.asdf/bin" >> $GITHUB_PATH
+        echo "$HOME/.asdf/shims" >> $GITHUB_PATH
+
     - name: Get GO cache directory path
       id: go-cache-dir-path
       run: echo "::set-output name=dir::$(go env GOCACHE)"
