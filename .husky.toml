@@ -26,7 +26,8 @@ commit-msg = [
 # list staged files do some pre-process and git add
 [lint-staged]
 "*.go" = [
-    # "goimports -l -w",
+    "go vet",
+    "goimports -l -w",
     "gofmt -l -w",
 ]
 

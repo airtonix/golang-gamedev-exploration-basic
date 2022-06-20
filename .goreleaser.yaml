@@ -13,21 +13,6 @@ builds:
       - amd64
       - wasm
 
-archives:
-  - id: "{{.ProjectName}}"
-    builds:
-      - "{{.ProjectName}}"
-    replacements:
-      386: i386
-    format_overrides:
-      - goos: js
-        format: zip
-      - goos: windows
-        format: zip
-    files:
-      - ./*.md
-      - LICENSE
-
 checksum:
   name_template: "checksums.txt"
 

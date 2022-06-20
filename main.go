@@ -10,6 +10,12 @@ import (
 	"github.com/sedyh/mizu/pkg/engine"
 )
 
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func main() {
 
 	ebiten.SetWindowSize(800, 600)
@@ -19,6 +25,7 @@ func main() {
 	rand.Seed(time.Now().UTC().UnixNano())
 
 	g := engine.NewGame(&game.Game{})
+
 	if err := ebiten.RunGame(g); err != nil {
 		log.Fatal(err)
 	}
