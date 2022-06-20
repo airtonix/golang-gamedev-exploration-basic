@@ -14,7 +14,7 @@ post-version = [
 
 # git hook pre commit
 pre-commit = [
-    # "golangci-lint run",
+    "golangci-lint run",
     "husky lint-staged",
 ]
 
