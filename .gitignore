@@ -21,7 +21,6 @@
 !go.sum
 !main.go
 !flags.go
-!internal/
 !components/
 !systems/
 !game/
