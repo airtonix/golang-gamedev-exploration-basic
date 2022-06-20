@@ -1,24 +1,36 @@
-# This is an example .goreleaser.yml file with some sensible defaults.
-# Make sure to check the documentation at https://goreleaser.com
+# GoReleaser
+# https://goreleaser.com
+#
+
+project_name: rpg-framework-exploration
+
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod tidy
 
 builds:
-  - goos:
+  - id: rpg-framework-exploration
+    goos:
       - js
       - linux
+      - windows
     goarch:
       - amd64
       - wasm
+    env:
+      - CGO_ENABLED=1
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+      - -X main.name={{.ProjectName}}
 
 archives:
-  - id: "{{.ProjectName}}"
+  - id: rpg-framework-exploration
     builds:
-      - "{{.ProjectName}}"
-    replacements:
-      386: i386
+      - rpg-framework-exploration
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     format_overrides:
       - goos: js
         format: zip

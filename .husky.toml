@@ -14,7 +14,7 @@ post-version = [
 
 # git hook pre commit
 pre-commit = [
-    # "golangci-lint run",
+    "golangci-lint run",
     "husky lint-staged",
 ]
 
@@ -26,7 +26,8 @@ commit-msg = [
 # list staged files do some pre-process and git add
 [lint-staged]
 "*.go" = [
-    # "goimports -l -w",
+    "go vet",
+    "goimports -l -w",
     "gofmt -l -w",
 ]
 
