@@ -1,9 +1,8 @@
 package systems
 
 import (
-	"fmt"
-
 	"github.com/airtonix/rpg/components"
+	"github.com/airtonix/rpg/core/num"
 	"github.com/sedyh/mizu/pkg/engine"
 )
 
@@ -24,7 +23,6 @@ func (system *PlayerControlSystem) Update(world engine.World) {
 	).Get()
 
 	if !ok {
-		fmt.Println("No entity with Position, Control and Velocity")
 		return
 	}
 
@@ -34,26 +32,26 @@ func (system *PlayerControlSystem) Update(world engine.World) {
 
 	player.Get(&pos, &vel, &control)
 
-	vel.X = 0.0
-	vel.Y = 0.0
+	moveDirectionX := 0.0
+	moveDirectionY := 0.0
 
 	if control.Direction["Right"] {
-		vel.X = 1.0
+		moveDirectionX = 1.0
 	}
 
 	if control.Direction["Left"] {
-		vel.X = -1.0
+		moveDirectionX = -1.0
 	}
 
 	if control.Direction["Up"] {
-		vel.Y = -1.0
+		moveDirectionY = -1.0
 	}
 
 	if control.Direction["Down"] {
-		vel.Y = 1.0
+		moveDirectionY = 1.0
 	}
 
-	// vel.X = num.Lerp(vel.X, control.MoveSpeed*moveDirectionX, control.MoveSpeed)
-	// vel.Y = num.Lerp(vel.Y, control.MoveSpeed*moveDirectionY, control.MoveSpeed)
+	vel.X = num.Lerp(vel.X, control.MoveSpeed*moveDirectionX, control.MoveSpeed)
+	vel.Y = num.Lerp(vel.Y, control.MoveSpeed*moveDirectionY, control.MoveSpeed)
 
 }

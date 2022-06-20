@@ -83,3 +83,7 @@ fi
 
 echo "===> Installing build deps with ASDF"
 asdf install
+
+go get
+
+asdf reshim
